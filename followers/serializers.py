@@ -4,7 +4,7 @@ from .models import Follower
 
 
 class FollowerSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.usarnem')
+    owner = serializers.ReadOnlyField(source='owner.username')
     followed_name = serializers.ReadOnlyField(source='followed.username')
 
     class Meta:
@@ -17,6 +17,4 @@ class FollowerSerializer(serializers.ModelSerializer):
         try:
             return super().create(validated_data)
         except IntegrityError:
-            raise serializers.ValidationError({
-                'detail': 'possible duplicate'
-            })
+            raise serializers.ValidationError({'detail': 'possible duplicate'})
