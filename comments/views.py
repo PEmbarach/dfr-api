@@ -10,7 +10,7 @@ class CommentList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.all()
     filter_backends = [
-        DjangoFilterBackend,
+        DjangoFilterBackend
     ]
     filterset_fields = [
         'post'
